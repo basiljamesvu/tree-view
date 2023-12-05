@@ -30,7 +30,7 @@ const TreeView = () => {
 
     const handleRightClick = (e) => {
       e.preventDefault();
-      if (!node.children || node.children.length === 0) {
+      if (!node.children && contextMenuActions.length >= 1 ) {
         setContextMenuPosition({ top: e.clientY, left: e.clientX });
         console.log(`Right-clicked on leaf node ${node.label}`);
       }
@@ -72,7 +72,7 @@ const TreeView = () => {
     );
   };
 
-  if (!treeData.length || !contextMenuActions.length) {
+  if (!treeData.length) {
     // Data is still loading, you can render a loading indicator or return null
     return null;
   }

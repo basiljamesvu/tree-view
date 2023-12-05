@@ -8,7 +8,6 @@ const Header = () => {
   return (
     <header className="app-header">
       <img src={logo} alt="Logo" className="app-logo" />
-      <p className="app-title">Tree View Component</p>
     </header>
   );
 };
