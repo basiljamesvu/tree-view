@@ -1,50 +1,24 @@
 // TreeView.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './menu.scss';
 
 const TreeView = () => {
-  const sampleData = [
-    {
-      id: '1',
-      label: 'Node 1',
-      children: [
-        {
-          id: '2',
-          label: 'Node 1.1',
-          children: [
-            {
-              id: '3',
-              label: 'Node 1.1.1',
-            },
-            {
-              id: '4',
-              label: 'Node 1.1.2',
-            },
-          ],
-        },
-        {
-          id: '5',
-          label: 'Node 1.2',
-        },
-      ],
-    },
-    {
-      id: '6',
-      label: 'Node 2',
-      children: [
-        {
-          id: '7',
-          label: 'Node 2.1',
-        },
-        {
-          id: '8',
-          label: 'Node 2.2',
-        },
-      ],
-    },
-  ];
+  const [treeData, setTreeData] = useState([]);
+  const [contextMenuActions, setContextMenuActions] = useState([]);
+
+  useEffect(() => {
+    // Load tree data from JSON file
+    fetch('/treeData.json')
+      .then((response) => response.json())
+      .then((data) => setTreeData(data));
+
+    // Load context menu actions from JSON file
+    fetch('/contextMenuActions.json')
+      .then((response) => response.json())
+      .then((data) => setContextMenuActions(data));
+  }, []);
 
   const TreeNodeComponent = ({ node }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -80,27 +54,32 @@ const TreeView = () => {
           </div>
         )}
         {contextMenuPosition.top !== 0 && contextMenuPosition.left !== 0 && (
-          <ContextMenu position={contextMenuPosition} />
+          <ContextMenu position={contextMenuPosition} actions={contextMenuActions} />
         )}
       </div>
     );
   };
 
-  const ContextMenu = ({ position }) => {
+  const ContextMenu = ({ position, actions }) => {
     return (
       <div className="context-menu" style={{ top: position.top, left: position.left }}>
         <ul>
-          <li>Action 1</li>
-          <li>Action 2</li>
-          <li>Action 3</li>
+          {actions.map((action, index) => (
+            <li key={index}>{action}</li>
+          ))}
         </ul>
       </div>
     );
   };
 
+  if (!treeData.length || !contextMenuActions.length) {
+    // Data is still loading, you can render a loading indicator or return null
+    return null;
+  }
+
   return (
     <div className="tree-view">
-      {sampleData.map((node) => (
+      {treeData.map((node) => (
         <TreeNodeComponent key={node.id} node={node} />
       ))}
     </div>
