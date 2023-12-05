@@ -22,12 +22,14 @@
       border-radius: 5px;
 
       .toggle-icon {
-        width: 12px;
-        height: 12px;
-        margin-right: 8px;
-        border: 1px solid #555;
-        border-radius: 50%;
-        transition: transform 0.3s ease;
+
+        &.open::before {
+          content: '▼'; /* Change this to your desired open icon or element */
+        }
+      
+        &.closed::before {
+          content: '►'; /* Change this to your desired closed icon or element */
+        }
 
         &.open {
           transform: rotate(90deg);

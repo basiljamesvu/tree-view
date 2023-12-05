@@ -43,7 +43,7 @@ const TreeView = () => {
     return (
       <div className="tree-node" onMouseLeave={closeContextMenu}>
         <div className="node-label" onClick={handleToggle} onContextMenu={handleRightClick}>
-          {node.children && <span className={`toggle-icon ${isOpen ? 'open' : 'closed'}`}></span>}
+        {node.children && <span className={`toggle-icon ${isOpen ? 'open' : 'closed'}`}></span>}
           {node.label}
         </div>
         {isOpen && node.children && (
