@@ -1,9 +1,11 @@
 import Menu from "./components/menu";
 import './App.scss';
+import Header from "./components/header";
+
 
 function App()
 {
-  return <div><Menu></Menu></div>
+  return <div><Header/><Menu/></div>
 }
 
 export default App;

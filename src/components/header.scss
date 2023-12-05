@@ -1,0 +1,20 @@
+// Header.scss
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333; // Change to your desired background color
+    color: #fff; // Change to your desired text color
+  }
+  
+  .app-logo {
+    width: 40px; // Adjust the width of your logo
+    height: auto;
+  }
+  
+  .app-title {
+    margin-left: 10px; // Adjust the spacing between the logo and title
+  }
+  
