@@ -43,8 +43,39 @@ const TreeView = () => {
     return (
       <div className="tree-node" onMouseLeave={closeContextMenu}>
         <div className="node-label" onClick={handleToggle} onContextMenu={handleRightClick}>
-        {node.children && <span className={`toggle-icon ${isOpen ? 'open' : 'closed'}`}></span>}
-          {node.label}
+        <span className='highlight-region'>
+        {node.children && !isOpen &&(
+        <>
+          <img
+            className="folder-icon"
+            src="/abb_down_16.png" // Replace with the actual path to your folder icon
+          />
+         <img
+            className="folder-icon"
+            src="/abb_folder_16.svg" // Replace with the actual path to your folder icon
+          />
+        </>
+        )}
+        {node.children && isOpen &&(
+          <>
+          <img
+            className="folder-icon"
+            src="/abb_right_16.png" 
+            style={{ marginRight: '8px' }}// Replace with the actual path to your folder icon
+          />
+          <img
+            className="folder-icon"
+            src="/abb_folder-open_16.svg" // Replace with the actual path to your folder icon
+          />
+          </>
+        )}
+        {!node.children &&(
+          <img
+            className="folder-icon"
+            src="/abb_document-pdf_16.png" 
+          />
+        )}
+        <span className='label'>{node.label}</span></span>
         </div>
         {isOpen && node.children && (
           <div className="node-children">

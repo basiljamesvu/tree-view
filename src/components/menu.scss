@@ -7,38 +7,38 @@
   .tree-node {
     margin-left: 10px;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
-    background-color: #f9f9f9; /* Light background color for tree nodes */
-
-    &:hover {
-      background-color: #e6e6e6; /* Slightly darker background on hover */
-    }
-
+ 
     .node-label {
       display: flex;
       align-items: center;
       cursor: pointer;
       padding: 8px;
-      border-radius: 5px;
 
-      .toggle-icon {
+      .label{
+        height: 16px; 
+      }
 
-        &.open::before {
-          content: '▼'; /* Change this to your desired open icon or element */
+      .folder-icon {
+        width: 16px; // Adjust the width and height as needed
+        height: 16px;
+        margin-right: 8px;
+        color: red;
+      }
+      .highlight-region
+      {
+        &:hover {
+          background-color: #FFC9CD; 
+          border: 1px solid #FFC9CD; /* Add a border for emphasis */
+          padding: 5px; /* Add padding for a boxed effect */
+          width:300px;
+          height: 32px;
+          border-radius: 5px;
+          align-items: center;
+
         }
+      }
       
-        &.closed::before {
-          content: '►'; /* Change this to your desired closed icon or element */
-        }
 
-        &.open {
-          transform: rotate(90deg);
-        }
-      }
-
-      &:hover {
-        background-color: #dcdcdc; /* Slightly darker background on hover */
-      }
     }
 
     .node-children {
@@ -53,7 +53,6 @@
     background-color: #ffffff;
     border: 1px solid #e1e1e1;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
     width: 150px; /* Adjust width as needed */
     z-index: 1;
 
