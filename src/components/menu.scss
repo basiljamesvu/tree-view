@@ -37,7 +37,16 @@
           align-items: center;
 
         }
-       
+        &.highlighted
+        {
+          background-color: #e51b28; 
+          border: 1px solid #e90d1b; /* Add a border for emphasis */
+          padding: 5px; /* Add padding for a boxed effect */
+          width:300px;
+          height:32px;
+          border-radius: 5px;
+          align-items: center;
+        }
       }
       
 

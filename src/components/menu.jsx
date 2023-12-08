@@ -7,6 +7,7 @@ import './menu.scss';
 const TreeView = () => {
   const [treeData, setTreeData] = useState([]);
   const [contextMenuActions, setContextMenuActions] = useState([]);
+  const [highlightedNode, setHighlightedNode] = useState(null);
 
   useEffect(() => {
     // Load tree data from JSON file
@@ -23,13 +24,24 @@ const TreeView = () => {
   const TreeNodeComponent = ({ node }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [contextMenuPosition, setContextMenuPosition] = useState({ top: 0, left: 0 });
-
     const handleToggle = () => {
       setIsOpen(!isOpen);
     };
+    const handleClick = () => {
+      handleToggle();
+      if (!node.children) 
+      {
+        setHighlightedNode(node.id);
+      }
+      
+      }
 
     const handleRightClick = (e) => {
       e.preventDefault();
+      if (!node.children) 
+      {
+        setHighlightedNode(node.id);
+      }
       if (!node.children && contextMenuActions.length >= 1 ) {
         setContextMenuPosition({ top: e.clientY, left: e.clientX });
         console.log(`Right-clicked on leaf node ${node.label}`);
@@ -42,8 +54,8 @@ const TreeView = () => {
 
     return (
       <div className="tree-node" onMouseLeave={closeContextMenu}>
-        <div className="node-label" onClick={handleToggle} onContextMenu={handleRightClick}>
-        <span className='highlight-region'>
+        <div className="node-label" onClick={handleClick} onContextMenu={handleRightClick}>
+        <span className={`highlight-region ${highlightedNode === node.id ? 'highlighted' : ''}`}>
         {node.children && !isOpen &&(
         <>
           <img
