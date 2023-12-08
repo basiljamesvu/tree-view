@@ -22,6 +22,7 @@
         width: 16px; // Adjust the width and height as needed
         height: 16px;
         margin-right: 8px;
+        margin-left: 8px;
         color: red;
       }
       .highlight-region
@@ -31,10 +32,19 @@
           border: 1px solid #FFC9CD; /* Add a border for emphasis */
           padding: 5px; /* Add padding for a boxed effect */
           width:300px;
-          height: 32px;
+          height:32px;
           border-radius: 5px;
           align-items: center;
 
+        }
+        &:active {
+          background-color: #3366FF; /* Background color on hover and click */
+          border: 1px solid #3366FF; /* Border color on hover and click */
+          padding: 5px; /* Padding on hover and click for a boxed effect */
+          width: 300px; /* Width of the element on hover and click */
+          height: 32px; /* Height of the element on hover and click */
+          border-radius: 5px; /* Border radius for rounded corners */
+          align-items: center; /* Align items in the container (if applicable) */
         }
       }
       
@@ -69,7 +79,7 @@
         transition: background-color 0.3s;
 
         &:hover {
-          background-color: #f0f0f0;
+          background-color: #DBDBDB;
         }
       }
     }
