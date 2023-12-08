@@ -37,15 +37,7 @@
           align-items: center;
 
         }
-        &:active {
-          background-color: #3366FF; /* Background color on hover and click */
-          border: 1px solid #3366FF; /* Border color on hover and click */
-          padding: 5px; /* Padding on hover and click for a boxed effect */
-          width: 300px; /* Width of the element on hover and click */
-          height: 32px; /* Height of the element on hover and click */
-          border-radius: 5px; /* Border radius for rounded corners */
-          align-items: center; /* Align items in the container (if applicable) */
-        }
+       
       }
       
 
